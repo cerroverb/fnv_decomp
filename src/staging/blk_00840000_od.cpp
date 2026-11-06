@@ -3127,7 +3127,7 @@ struct FUN_008598d0_shell
     void* FUN_00861c00(void*);
     TESForm* FUN_00859a90(unsigned int key, BinaryRecord36* data);
     TESForm* FUN_00859f20(unsigned int key, BinaryRecord44* data);
-    void FUN_00858730(TESForm*);
+    void LoadForm(TESForm*);
     void ProcessSourceItem(unsigned int key);
 };
 // @fnv 0x008598d0
@@ -3158,7 +3158,7 @@ void FUN_008598d0_shell::ProcessSourceItem(unsigned int key)
                         delete asSpecial;
                         return;
                     }
-                    FUN_00858730(pCreated);
+                    LoadForm(pCreated);
                 }
             }
         }
@@ -3175,7 +3175,7 @@ void FUN_008598d0_shell::ProcessSourceItem(unsigned int key)
                 record2.value10 = FUN_00861c00(record2.value10);
                 TESForm* newObject2 = FUN_00859f20(key, &record2);
                 if (newObject2 != 0)
-                    FUN_00858730(newObject2);
+                    LoadForm(newObject2);
                 tracker.FUN_00905330(&key);
             }
         }
@@ -5097,7 +5097,7 @@ struct Manager859
     Map859* interiors;
     Map859* worlds;
     bool FUN_0047c850();
-    bool FUN_00858730(Cell859*);
+    bool LoadForm(Cell859*);
     void ProcessSourceItem(unsigned);
     bool FUN_00859690(Cell859* cell);
 };
@@ -5107,7 +5107,7 @@ bool Manager859::FUN_00859690(Cell859* cell)
     bool result5 = false;
     if (!FUN_0047c850())
         return result5;
-    result5 = FUN_00858730(cell);
+    result5 = LoadForm(cell);
     if (cell->FUN_00425fd0())
     {
         List859* list8;

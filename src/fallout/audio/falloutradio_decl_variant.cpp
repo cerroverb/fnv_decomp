@@ -54,7 +54,7 @@ class BSAudio
 };
 BSAudio* FUN_00453a70();
 // @fnv 0x00835be0
-void FUN_00835be0(BGSTalkingActivator* form, TESTopic* topic)
+void StartRadioConversation(BGSTalkingActivator* form, TESTopic* topic)
 {
     TESTopic* a = 0;
     FalloutRadio::RadioStationState* station = 0;
