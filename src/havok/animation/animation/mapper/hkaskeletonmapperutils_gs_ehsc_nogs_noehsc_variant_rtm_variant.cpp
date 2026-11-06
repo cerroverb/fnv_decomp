@@ -1192,7 +1192,7 @@ __forceinline bool __cdecl checkRotation(const HkMapperParams& params, short bon
 }
 
 // @fnv 0x00ce61c0
-__declspec(nothrow) void __cdecl FUN_00ce61c0(const HkMapperParams& originalParams, HkMapperData& originalAToB,
+__declspec(nothrow) void __cdecl createMapping(const HkMapperParams& originalParams, HkMapperData& originalAToB,
                                               HkMapperData& originalBToA) throw()
 {
     hkErrorInstance().beginSection(0x54e4323e, "hkaSkeletonMapperUtils::createMapping");

@@ -42185,7 +42185,7 @@
     "?FUN_00c7e3b0@SceneOwner@@QAEXXZ": "0x00c7e3b0",
     "?FUN_00ce5310@PoseBuffer@@QAEXXZ": "0x00ce5310",
     "?FUN_00c7bfd0@PoseState@@QAEXXZ": "0x00c7bfd0",
-    "?FUN_00ce61c0@@YAXPAUPoseState@@PAUPoseBuffer@@1@Z": "0x00ce61c0",
+    "?createMapping@@YAXPAUPoseState@@PAUPoseBuffer@@1@Z": "0x00ce61c0",
     "?FUN_00c7c2b0@PoseState@@QAEXXZ": "0x00c7c2b0",
     "?FUN_00c79e20@SceneOwner@@QAEXXZ": "0x00c79e20",
     "??0FUN_00ce4a20@@QAE@PAUPoseBuffer@@@Z": "0x00ce4a20",
@@ -477324,7 +477324,7 @@
     },
     {
      "address": "0x00ce61c0",
-     "symbol": "?FUN_00ce61c0@@YAXABUHkMapperParams@@AAUHkMapperData@@1@Z",
+     "symbol": "?createMapping@@YAXABUHkMapperParams@@AAUHkMapperData@@1@Z",
      "size": 13246
     }
    ],
@@ -506106,7 +506106,7 @@
    "functions": [
     {
      "address": "0x00cfc1d0",
-     "symbol": "?FUN_00cfc1d0@DebugTableDispatcher@@QAEXXZ",
+     "symbol": "?debugPrintTable@DebugTableDispatcher@@QAEXXZ",
      "size": 884
     }
    ],
@@ -533326,7 +533326,7 @@
    "functions": [
     {
      "address": "0x00d63680",
-     "symbol": "?FUN_00d63680@hkpVehicleViewer@VehicleStepD63680@@MAEXPAVhkpWorld@2@@Z",
+     "symbol": "?step@hkpVehicleViewer@VehicleStepD63680@@MAEXPAVhkpWorld@2@@Z",
      "size": 1486
     }
    ],
