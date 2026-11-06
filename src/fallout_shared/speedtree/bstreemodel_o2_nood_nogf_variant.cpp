@@ -191,7 +191,7 @@ struct GeometryX
 };
 struct SpeedTreeX
 {
-    void FUN_00b0ab20(GeometryX& arGeometry, int a2, int a3, int a4, int a5);
+    void GetGeometry(GeometryX& arGeometry, int a2, int a3, int a4, int a5);
     void FUN_00b08750();
     void FUN_00b08780();
 };
@@ -269,7 +269,7 @@ template <class T> struct NiPointer
 };
 struct TreeRuntimeCopy
 {
-    TreeRuntimeCopy* FUN_00b05210();
+    TreeRuntimeCopy* MakeInstance();
 };
 struct TreeCloneView
 {

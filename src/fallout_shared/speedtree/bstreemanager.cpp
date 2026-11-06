@@ -279,8 +279,8 @@ struct Twin_0084d030
 struct GameTimerRecord;
 extern GameTimerRecord g_timeGlobal;
 extern float DAT_011d5dd4;
-void FUN_00b07060(float);
-void FUN_00b06c10(float*, float*);
+void SetTime(float);
+void SetCamera(float*, float*);
 struct NiTexture;
 struct BSShaderNoLightingProperty
 {
@@ -335,7 +335,7 @@ void FUN_006652e0(NiAVObject* apCamera, bool abMenuMode)
     if (!abMenuMode)
     {
         DAT_011d5dd4 += ((Twin_0084d030*)&g_timeGlobal)->GetStoredFloatValue();
-        FUN_00b07060(DAT_011d5dd4);
+        SetTime(DAT_011d5dd4);
     }
     if (apCamera)
     {
@@ -346,7 +346,7 @@ void FUN_006652e0(NiAVObject* apCamera, bool abMenuMode)
         fcamDir[0] = vecTemp.x;
         fcamDir[1] = vecTemp.y;
         fcamDir[2] = vecTemp.z;
-        FUN_00b06c10(fcamLoc, fcamDir);
+        SetCamera(fcamLoc, fcamDir);
     }
     if (!abMenuMode)
     {
