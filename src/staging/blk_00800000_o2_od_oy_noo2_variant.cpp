@@ -8,29 +8,28 @@
 #include "../../include/layout_support.h"
 
 #include <xmmintrin.h>
+#include "../../include/hkVector4.h"
 // Read a vector property from this object into an aligned local and hand it to a setter on
 // the target passed in.
 
-struct hkVector4B00
-{
-    __m128 m_vComponents;
-    hkVector4B00();
-};
-void __cdecl FUN_00458620(void* apTarget, const hkVector4B00& arVector);
+void __cdecl FUN_00458620(void* apTarget, const hkVector4& arVector);
 
 struct VectorSourceB00
 {
-    void SubtractVectors(hkVector4B00& arOut);
+    void SubtractVectors(hkVector4& arOut);
     void FUN_00812b00(void* apTarget);
 };
 
+// Preserve the original stack cookie with the shared vector's union layout.
+#pragma strict_gs_check(push, on)
 // @fnv 0x00812b00
 void VectorSourceB00::FUN_00812b00(void* apTarget)
 {
-    hkVector4B00 kVector;
+    hkVector4 kVector;
     SubtractVectors(kVector);
     FUN_00458620(apTarget, kVector);
 }
+#pragma strict_gs_check(pop)
 
 struct xP3
 {

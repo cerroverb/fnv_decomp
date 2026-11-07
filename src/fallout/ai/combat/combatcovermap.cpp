@@ -2,11 +2,7 @@
 // src/fallout/ai/combat/combatcovermap.cpp - unit created 2026-10-16 from the whole-binary attribution (360 source path: d:/_fallout3/platforms/common/code/fallout/ai/combat/combatcovermap.cpp).
 // Functions are listed by their @fnv annotations; compile flags inferred from the PC code.
 
-struct CombatCoverMap
-{
-    void* __thiscall FUN_00983100(unsigned int flags);
-    void __thiscall FUN_00983130();
-};
+#include "../../../../include/CombatCoverMap.h"
 
 // Calls FUN_00983130, then deletes this if flags has bit 0 set, and returns this.
 // @fnv 0x00983100
@@ -74,6 +70,7 @@ void __thiscall FUN_009a0510_shell::FUN_009a0510(StageHolder* pStage)
             ->FUN_00983280(m_1c4, pStage);
 }
 
+class TESWorldSpace;
 namespace fnv_009a0560 {
 struct StageHolder
 {
@@ -87,7 +84,6 @@ struct FUN_00983420_shell
 {
     bool __thiscall GetOrCreateCoverItem(int, StageHolder*);
 };
-struct TESWorldSpace;
 extern TESWorldSpace* BGSSaveLoadGlobalDataWorldspacePtr;
 struct FUN_009a0560_shell
 {
@@ -424,8 +420,9 @@ float FUN_008a88f0_cls::FUN_008a88f0()
     return 1.0f;
 }
 
-struct CoverMapValue
+class CoverMapValue
 {
+  public:
     ~CoverMapValue();
 };
 
@@ -437,13 +434,6 @@ struct CoverMapTarget
 struct CoverMapOwner
 {
     CoverMapTarget* GetTarget();
-};
-
-template <class T> struct CoverMapPointer
-{
-    T* m_pObject;
-    ~CoverMapPointer();
-    operator T*() const;
 };
 
 struct CoverMapBase
@@ -521,8 +511,9 @@ struct CoverMapVirtualTarget
     virtual void Detach(CoverMapOwner* owner);
 };
 
-struct CoverMapOwnerEx
+class CoverMapOwnerEx
 {
+  public:
     CoverMapVirtualTarget* GetTarget();
 };
 
