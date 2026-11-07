@@ -3,9 +3,7 @@
 // byte only under /MT /Od /Oy- /GS /EHsc /Gy /Ob1 (unit src/fallout_shared/modelloader.cpp lists /MT /Od /Oy- /GS /EHsc /Gy). Declarations copied from that unit's skeleton; move the functions
 // to their real unit once identified.
 
-#include "modelloader_verified_packet.h"
-NiRenderer* FUN_0043c4b0();
-const NiFixedString& FUN_00448a80();
+#include "../../include/DummyPointerMap.h"
 
 void __cdecl ReportAssertionViolation(const char*, unsigned int);
 
@@ -314,10 +312,6 @@ struct StreamRTTI
 };
 
 unsigned int __cdecl FUN_00a63630(const char*);
-struct DummyPointerMap
-{
-    bool FUN_00853130(unsigned int, unsigned int&);
-};
 struct StreamObject
 {
     virtual void slot0();
@@ -772,7 +766,7 @@ struct TargetStream
         unsigned int idx;
         void* item;
         if (map && aVal)
-            map->FUN_00853130(aVal, aItem);
+            map->GetAt(aVal, aItem);
         return aItem;
     }
     bool FUN_00c3ac10();
@@ -1709,10 +1703,10 @@ struct C3B270_Ref
     {
         if (m_pObject != object)
         {
-            if (m_pObject)
+            if (m_pObject != 0)
                 m_pObject->DecRefCount();
             m_pObject = object;
-            if (m_pObject)
+            if (m_pObject != 0)
                 m_pObject->IncRefCount();
         }
         return *this;
