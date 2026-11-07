@@ -1,6 +1,10 @@
 
 // effectitemlist_ctxr_variant.cpp: rename variant for 0x00405760 (integration 2026-10-30): the unit's skeleton with Str renamed, whose names are bound elsewhere.
 #include "effectitemlist.h"
+
+#include "../../../include/BSStringT.h"
+
+#include "../../../include/EffectSetting.h"
 ActorPathHandler::PATH_HANDLER_RESULT CallNoPathUpdate(ActorPathHandler* pHandler, float fSeconds)
 {
     return pHandler->CompleteNoPathUpdate(fSeconds);
@@ -12,24 +16,6 @@ struct File
     int FUN_004726b0();
     void ReadChunkInt(unsigned*);
     void FUN_004726f0();
-};
-struct Str_r00405760
-{
-    char data[8];
-    ~Str_r00405760();
-    const char* FUN_00559450();
-};
-class TESForm
-{
-  public:
-    virtual ~TESForm();
-};
-class EffectSetting : public TESForm
-{
-  public:
-    bool HasFlag2();
-    int FUN_00586150();
-    Str_r00405760 AssignFromSub();
 };
 struct Item
 {
@@ -69,13 +55,13 @@ void List::FUN_00405760(File* file, const char* name)
         {
             actorValue = new Item(effect);
             file->FUN_004726f0();
-            if (effect->HasFlag2() && effect->FUN_00586150() == 0x36)
+            if (effect->HasFlag2() && effect->GetAssociatedActorValue() == 0x36)
                 item = 0;
             if (actorValue->FUN_00404120(file, name))
                 FUN_00405d20(actorValue);
             else
             {
-                FUN_005b5e40(&DAT_010125c0, effect->AssignFromSub().FUN_00559450(), name == 0 ? &DAT_010120d8 : name);
+                FUN_005b5e40(&DAT_010125c0, static_cast<const char*>(effect->GetEffectName()), name == 0 ? &DAT_010120d8 : name);
                 delete actorValue;
                 actorValue = 0;
             }

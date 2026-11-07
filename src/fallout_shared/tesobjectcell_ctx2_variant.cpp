@@ -1,19 +1,15 @@
 
 // tesobjectcell_ctx2_variant.cpp: context variant of src/fallout_shared/tesobjectcell.cpp: its stripped skeleton, as these functions were checked
 // against, for verified matches whose own declarations clash with the unit's current types.
-#include "tesobjectcell_packet.h"
+#include "../../include/NiControllerSequence.h"
+#include "../../include/SL.h"
+#include "../../include/BSAnimGroupSequence.h"
 void __cdecl operator delete(void* pointer);
 const char kTESObjectCELLCellRefLockEnter[] = "TESObjectCELL::CellRefLockEnter()";
 unsigned int FUN_0054f4c0();
 NiAVObject* FUN_0054f4f0();
 
 // ---- candidate ----
-struct SL
-{
-    int item;
-    SL* next;
-};
-
 class AnimGroup
 {
   public:
@@ -22,43 +18,6 @@ class AnimGroup
     bool GetMaxByte();
 };
 
-class NiControllerSequence
-{
-  public:
-    virtual void d00();
-    virtual void d01();
-    virtual void d02();
-    virtual void d03();
-    virtual void d04();
-    virtual void d05();
-    virtual void d06();
-    virtual void d07();
-    virtual void d08();
-    virtual void d09();
-    virtual void d10();
-    virtual void d11();
-    virtual void d12();
-    virtual void d13();
-    virtual void d14();
-    virtual void d15();
-    virtual void d16();
-    virtual void d17();
-    virtual void d18();
-    virtual void d19();
-    virtual void d20();
-    virtual void d21();
-    virtual void d22();
-    virtual void d23();
-    virtual void v24(void* p);
-    int GetType();
-    char* FUN_0084e3a0();
-    SL* GetTESPackageList();
-    AnimGroup* GetAnimGroup();
-};
-
-class BSAnimGroupSequence : public NiControllerSequence
-{
-};
 
 class Holder
 {
@@ -161,24 +120,24 @@ void LockCtx::FUN_004d8b90(int arg1, NiControllerSequence* arg2)
         p = false;
         if (cf)
         {
-            h = cf->GetAnimGroup()->FUN_00759d80();
-            a = cf->GetAnimGroup()->GetMaxOfTwoBytes();
-            p = cf->GetAnimGroup()->GetMaxByte();
+            h = reinterpret_cast<AnimGroup*>(cf->GetAnimGroup())->FUN_00759d80();
+            a = reinterpret_cast<AnimGroup*>(cf->GetAnimGroup())->GetMaxOfTwoBytes();
+            p = reinterpret_cast<AnimGroup*>(cf->GetAnimGroup())->GetMaxByte();
         }
         char eb[0x100];
         if (h)
         {
-            sprintf_s(eb, 0x100, "%s: %s, Count: %d, Blend: %0.2f", arg2->GetTESPackageList()->item, s,
+            sprintf_s(eb, 0x100, "%s: %s, Count: %d, Blend: %0.2f", arg2->GetTESPackageList()->a, s,
                       arg2->FUN_0084e3a0(), (double)h / 30.0);
         }
         else if (a || p)
         {
-            sprintf_s(eb, 0x100, "%s: %s, Count: %d, BlendIn: %0.2f, BlendOut: %0.2f", arg2->GetTESPackageList()->item,
+            sprintf_s(eb, 0x100, "%s: %s, Count: %d, BlendIn: %0.2f, BlendOut: %0.2f", arg2->GetTESPackageList()->a,
                       s, arg2->FUN_0084e3a0(), (double)a / 30.0, (double)p / 30.0);
         }
         else
         {
-            sprintf_s(eb, 0x100, "%s: %s, Count: %d", arg2->GetTESPackageList()->item, s, arg2->FUN_0084e3a0());
+            sprintf_s(eb, 0x100, "%s: %s, Count: %d", arg2->GetTESPackageList()->a, s, arg2->FUN_0084e3a0());
         }
         ba.msg = PrepareScriptMessage(eb, false);
         b.kind = 5;
@@ -186,7 +145,7 @@ void LockCtx::FUN_004d8b90(int arg1, NiControllerSequence* arg2)
         k.v = arg1;
         k.v = (int)DAT_00fdf28c(m_iThirdValue, 0x1100, 0, &k.v);
         arg1 = k.v;
-        arg2->v24(f);
+        arg2->GetViewerStrings(reinterpret_cast<NiViewerStringsArray*>(f));
         unsigned int i;
         for (i = 0; i < f->GetSize(); i++)
         {

@@ -2,6 +2,8 @@
 // src/fallout_shared/tesflora.cpp - unit created 2026-10-16 from the whole-binary attribution (360 source path: d:/_fallout3/platforms/common/code/fallout shared/tesflora.cpp).
 // Functions are listed by their @fnv annotations; compile flags inferred from the PC code.
 
+#include "../../include/TESFlora.h"
+
 struct S_00477f20
 {
     void FUN_00477f20();
@@ -49,17 +51,10 @@ void FUN_00508920_obj::FUN_00508920()
     reinterpret_cast<FUN_00485680*>(this)->M();
 }
 
-struct TESForm
-{
-    virtual void f00();
-};
-struct FUN_005e78f0_t : TESForm
+// The shared TESForm does not yet declare this out-of-line copy helper.
+struct FloraFormCopy
 {
     void FUN_004851b0(TESForm*);
-};
-struct TESFlora : FUN_005e78f0_t
-{
-    void FUN_00508990(TESForm*);
 };
 // @fnv 0x00508990
 void TESFlora::FUN_00508990(TESForm* apCopy)
@@ -67,7 +62,7 @@ void TESFlora::FUN_00508990(TESForm* apCopy)
     TESFlora* pcopy = dynamic_cast<TESFlora*>(apCopy);
     if (!pcopy)
         return;
-    FUN_004851b0(apCopy);
+    reinterpret_cast<FloraFormCopy*>(this)->FUN_004851b0(apCopy);
 }
 
 void __cdecl Deallocate(void*);
